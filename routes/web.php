@@ -20,4 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/exp', 'Exp\IntroController@create')->name('exp.intro');
+Route::get('/exp', 'Exp\IntroController@intro')->name('exp.intro');
+
+Route::post('/exp', 'Exp\IntroController@identify')->name('exp.identify');
