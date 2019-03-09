@@ -19,7 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+// Exp intro page
 Route::get('/exp', 'Exp\IntroController@intro')->name('exp.intro');
-
 Route::post('/exp', 'Exp\IntroController@identify')->name('exp.identify');
+
+// Exp steps
+Route::get('exp/step/{number}', 'Exp\StepsController@show')->where('number', '[1-4]')->name('exp.step');
+Route::post('exp/step/{number}', 'Exp\StepsController@submit')->where('number', '[1-4]')->name('exp.step.submit');
