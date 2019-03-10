@@ -11,5 +11,14 @@ class Exp extends Model
     protected $attributes = [
         'last_complete_step' => 0,
         'email' => null,
+        'data' => '{}',
     ];
+
+    protected $casts = [
+        'data' => 'array',
+    ];
+
+    function setData($key, $value){}
+
+    function data($key){}
 }
