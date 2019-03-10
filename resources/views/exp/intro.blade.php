@@ -22,7 +22,14 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
+                    <!-- show errors -->
+                    @if($errors->any())
+                        @foreach($errors->all() as $err)
+                            <div class="alert alert-danger" role="alert">
+                                {{ $err }}
+                            </div>
+                        @endforeach
+                    @endif
 
                     <form action="{{ route('exp.identify') }}" method="post">
                         @csrf
