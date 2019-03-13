@@ -15,8 +15,7 @@ class IntroController extends Controller
     function intro(){
         // redirect user to step 1 if user already indentified
         if(session()->has('exp_id')){
-            return 'already identified';
-            return redirect(route('exp.step.1'));
+            return redirect(route('exp.step', ['number' => 1]));
         }
         // show identify page
         return view('exp.intro');
@@ -29,8 +28,7 @@ class IntroController extends Controller
     function identify(Request $request){
         // redirect user to step 1 if user already indentified
         if(session()->has('exp_id')){
-            return 'already identified';
-            return redirect(route('exp.step.1'));
+            return redirect(route('exp.step', ['number' => 1]));
         }
         // validate input
         $validatedData = $request->validate([
@@ -43,6 +41,6 @@ class IntroController extends Controller
         session()->put('exp_id', $exp->id);
         // redirect to exp step 1
         //return redirect(route('exp.step.1'));
-        return 'identified';
+        return redirect(route('exp.step', ['number' => 1]));
     }
 }
