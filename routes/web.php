@@ -32,4 +32,4 @@ Route::get('clearSession', function(){
     session()->flush();
 });
 
-//Route::get('exp/result', 'Exp\ResultController@show')->name('exp.result');
+Route::get('exp/result', 'Exp\ResultController@show')->name('exp.result');
