@@ -21,4 +21,8 @@ class Exp extends Model
     function setData($key, $value){}
 
     function data($key){}
+
+    function answers(){
+        return $this->hasMany(\App\Exp\Answer::class);
+    }
 }
