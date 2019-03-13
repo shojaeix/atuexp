@@ -22,6 +22,9 @@
                     </div>
                     @endif
 
+                    @foreach($errors->all() as $err)
+                    <div class="alert alert-danger" role="alert">{{ $err }}</div>
+                    @endforeach
                     <div><img src="http://cdn.time.ir/Content/media/image/2019/01/72_orig.png" ></div>
 
                     <form action="{{ route('exp.step.submit', [ 'number' => $step_number ]) }}" method="post">
@@ -41,9 +44,54 @@
                             ] as $value=>$label)
 
                             <label for="form.question_1.radioButton.{{ $value }}" >{{ $label }}</label>
-                            <input id="form.question_1.radioButton.{{ $value }}" name="querstion_1" type="radio" value="{{ $value }}" >
+                            <input id="form.question_1.radioButton.{{ $value }}" name="question_1" type="radio" value="{{ $value }}" >
                             @endforeach
                         </div>
+
+                        <div class="">آیا سهم خود را در قیمت جاری به فروش میرسانید یا نگهداری میکنید ؟</div>
+                        <div>
+                            @foreach([
+                            '4' => '**** به احتمال زیاد میفروشم',
+                            '3' => '***',
+                            '2' => '**',
+                            '1' => '*به احتمال زیاد نگهداری میکنم',
+                            ] as $value=>$label)
+
+                            <label for="form.question_2.radioButton.{{ $value }}" >{{ $label }}</label>
+                            <input id="form.question_2.radioButton.{{ $value }}" name="question_2" type="radio" value="{{ $value }}" >
+                            @endforeach
+                        </div>
+
+                        <div>
+                            3. کمترین قیمت منتطقی که سهام خود را به فروش میرسانید چیست ؟
+                        </div>
+                        <div>
+                            <input name="question_3" type="text" value="{{old('question_3')}}" >
+                        </div>
+
+
+                        <div>
+                             4. پیش بینی شما از قیمت سهام در انتهای 12 ماهه ی آتی چیست ؟
+                        </div>
+                        <div>
+                            <input name="question_4" type="text" value="{{old('question_4')}}" >
+                        </div>
+
+                        <div>
+                             5. پیش بینی بد بینانه ی شما از قیمت سهام در انتهای 12 ماهه ی آتی چیست ؟ (در 95% مواقع قیمت سهام بالاتر ازا ین قیمت است)
+                        </div>
+                        <div>
+                            <input name="question_5" type="text" value="{{old('question_5')}}" >
+                        </div>
+
+                        <div>
+                            پیش بینی خوشبینانه ی شما از قیمت سهام در انتهای 12 ماهه ی آتی چیست ؟(در 95% مواقع قیمت سهام پایینتر ازا ین قیمت است)
+                        </div>
+                        <div>
+                            <input name="question_6" type="text" value="{{old('question_6')}}" >
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">submit</button>
                     </form>
 
 

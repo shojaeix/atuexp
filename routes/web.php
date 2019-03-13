@@ -26,3 +26,10 @@ Route::post('/exp', 'Exp\IntroController@identify')->name('exp.identify');
 // Exp steps
 Route::get('exp/step/{number}', 'Exp\StepsController@show')->where('number', '[1-4]')->name('exp.step');
 Route::post('exp/step/{number}', 'Exp\StepsController@submit')->where('number', '[1-4]')->name('exp.step.submit');
+
+
+Route::get('clearSession', function(){
+    session()->flush();
+});
+
+//Route::get('exp/result', 'Exp\ResultController@show')->name('exp.result');
