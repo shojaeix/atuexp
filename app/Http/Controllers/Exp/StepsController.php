@@ -26,7 +26,18 @@ class StepsController extends Controller
             return redirect(route('exp.step', ['step_number' => $number+1 ]));
         }
         $viewName = (($number<4) ? 1 : 4);
-        return view('exp.step.' . $viewName, [ 'step_number' => $number ]);
+
+        $exp = $this->generateRandomImageNumbers($exp);
+        $exp->save();
+        $imageNumber = 1;
+        if($number < 4){
+            $imageNumber = $exp->data('step' . $number . 'ImageNumber', 1 );
+        }
+
+        return view('exp.step.' . $viewName, [
+            'step_number' => $number,
+            'imageNumber' => $imageNumber,
+        ]);
     }
 
     function submit(Request $request, $number){
@@ -125,5 +136,28 @@ class StepsController extends Controller
                 break;
             default: abort(404);
         }
+    }
+
+    private function generateRandomImageNumbers($exp){
+
+        if($exp->data('imageNumbersGenerated', false)) {
+            return $exp;
+        }
+        // set flag
+        $exp->setData('imageNumbersGenerated', true);
+        // add all image names to an array
+        $imageNumbers = [ 1, 2, 3, 4, 5, 6 ];
+        // roll per step
+        for($i = 1; $i<=3; $i++){
+            // get a random key from image numbers array
+            $randomKey = array_rand($imageNumbers);
+            // get random image number value
+            $randomImageNumber = $imageNumbers[$randomKey];
+            // delete random element from image numbers array
+            unset($imageNumbers[$randomKey]);
+            // set step image number to exp object
+            $exp->setData('step' . $i . 'ImageNumber', $randomImageNumber);
+        }
+        return $exp;
     }
 }

@@ -27,7 +27,10 @@
                     @foreach($errors->all() as $err)
                     <div class="alert alert-danger text-right" style="direction: rtl" role="alert">{{ $err }}</div>
                     @endforeach
-                    <div ><img width="100%" src="http://cdn.time.ir/Content/media/image/2019/01/72_orig.png" ></div>
+
+                    <div >
+                        <div>Image number {{ $imageNumber }}:</div>
+                        <div class="mb-4 mt-2"><img width="100%"  src="{{ \URL::to('images/steps/' . $imageNumber . '.jpg') }}" ></div></div>
 
 
                     <form action="{{ route('exp.step.submit', [ 'number' => $step_number ]) }}" method="post"
