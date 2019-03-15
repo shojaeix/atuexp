@@ -16,7 +16,10 @@ class ResultController extends Controller
     function show(){
 
         $exp = Exp::findOrFail(session('exp_id'));
+
         $answers = $exp->answers;
+
+        session()->forget('exp_id');
 
         return view('exp.result', [
             'exp' => $exp,
