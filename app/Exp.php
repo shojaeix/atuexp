@@ -18,9 +18,23 @@ class Exp extends Model
         'data' => 'array',
     ];
 
-    function setData($key, $value){}
+    function setData(string $key, $value){
+        $data = $this->getAttribute('data');
 
-    function data($key){}
+        $data[$key] = $value;
+
+        $this->setAttribute('data', $data);
+    }
+
+    function hasData(string $key) : bool {
+        return isset($this->getAttribute('data')[$key]);
+    }
+
+    function data($key, $default = null){
+        $data = $this->getAttribute('data');
+
+        return ((isset($data[$key])) ? $data[$key] : $default);
+    }
 
     function answers(){
         return $this->hasMany(\App\Exp\Answer::class);
