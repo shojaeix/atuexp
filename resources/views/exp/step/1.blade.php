@@ -25,27 +25,38 @@
                     @foreach($errors->all() as $err)
                     <div class="alert alert-danger" role="alert">{{ $err }}</div>
                     @endforeach
-                    <div><img src="http://cdn.time.ir/Content/media/image/2019/01/72_orig.png" ></div>
+                    <div ><img width="100%" src="http://cdn.time.ir/Content/media/image/2019/01/72_orig.png" ></div>
 
-                    <form action="{{ route('exp.step.submit', [ 'number' => $step_number ]) }}" method="post">
+                    <form action="{{ route('exp.step.submit', [ 'number' => $step_number ]) }}" method="post" class="text-right">
                         @csrf
                         <div class="">به چه میزان از عملکرد سرمایه گذاری خود راضی هستید ؟</div>
-                        <div>
+                        <div class="row">
+                            <table class="table-borderless col col-12 text-center">
+                                <tr>
                             @foreach([
-                            '4' => '**** Very satisfied',
-                            '3' => '***',
-                            '2' => '**',
-                            '1' => '*',
-                            '0' => 'Natural',
-                            '-1' => '-',
-                            '-2' => '--',
-                            '-3' => '---',
-                            '-4' => '---- Very insatisfied',
+
+                                    '-1' => '',
+                                    '-2' => '',
+                                    '-3' => '',
+                                    '-4' => 'بسیار ناراضی',
+                            '0' => 'معمولی',
+                                    '4' => 'بسیار راضی',
+                                    '3' => '***',
+                                    '2' => '**',
+                                    '1' => '*',
                             ] as $value=>$label)
 
-                            <label for="form.question_1.radioButton.{{ $value }}" >{{ $label }}</label>
-                            <input id="form.question_1.radioButton.{{ $value }}" name="question_1" type="radio" value="{{ $value }}" >
+                            <td >
+                            <div><label for="form.question_1.radioButton.{{ $value }}" >{{ $label }}</label></div>
+                            <div>
+                                <input id="form.question_1.radioButton.{{ $value }}"  name="question_1" type="radio" value="{{ $value }}"
+                                        @if(is_numeric(old('question_1', null)) and old('question_1', null) == $value) checked @endif >
+                            </div>
+                            </td>
+
                             @endforeach
+                                </tr>
+                            </table>
                         </div>
 
                         <div class="">آیا سهم خود را در قیمت جاری به فروش میرسانید یا نگهداری میکنید ؟</div>
@@ -58,7 +69,9 @@
                             ] as $value=>$label)
 
                             <label for="form.question_2.radioButton.{{ $value }}" >{{ $label }}</label>
-                            <input id="form.question_2.radioButton.{{ $value }}" name="question_2" type="radio" value="{{ $value }}" >
+                            <input id="form.question_2.radioButton.{{ $value }}" name="question_2" type="radio" value="{{ $value }}"
+                                   @if(is_numeric(old('question_2', null)) and old('question_2', null) == $value) checked @endif
+                            >
                             @endforeach
                         </div>
 
