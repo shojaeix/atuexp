@@ -32,11 +32,15 @@ class IntroController extends Controller
         }
         // validate input
         $validatedData = $request->validate([
-            'email' => 'required|email|unique:exps',
+            'email' => 'required|email',
         ]);
         // create and save new Exp
-        $exp = new Exp($validatedData);
+        $exp = Exp::query()->firstOrCreate($validatedData);
         $exp->save();
+        // redirect with error, if exp already completed
+        if($exp->last_complete_step == 4){
+            return redirect()->back()->withErrors([ 'این ایمیل قبلا ثبت شده و آزمون آن تکمیل شده است.'])->withInput(['email' => $validatedData['email']]);
+        }
         // set session identify key
         session()->put('exp_id', $exp->id);
         // redirect to exp step 1
