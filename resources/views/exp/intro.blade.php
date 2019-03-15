@@ -19,9 +19,9 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+                    @if (session('success'))
+                    <div class="alert alert-success text-right " style=" direction: RTL;"  role="alert">
+                        {{ session('success') }}
                     </div>
                     @endif
                     <!-- show errors -->
@@ -40,7 +40,7 @@
                         <div class=" mb-2">
                         <div><label for="form.email" class="text-right float-right">برای ورود به آزمون، لطفا آدرس ایمیل خود را وارد کنید
                             </label></div>
-                        <div><input name="email" type="email" class="form-control col-6 @if($errors->has('email')) is-invalid @endif" id="form.email" placeholder="example@email.com"></div>
+                        <div><input name="email" type="email" class="form-control col-6 @if($errors->has('email')) is-invalid @endif" id="form.email" placeholder="example@email.com" value="{{ old('email') }}"></div>
                         </div>
                             <div class="">
                                 <button class="btn btn-primary  mb-2 col-12 " ><strong>شروع</strong></button>
