@@ -30,6 +30,7 @@
 
 
                         <th></th>
+                        <th>آخرین آپدیت</th>
                         <th>وضعیت آزمون</th>
                         <th>ایمیل شرکت کننده</th>
                         <th>شماره ثبت نام</th>
@@ -40,7 +41,8 @@
                         <tr>
 
                             <td></td>
-                            <td>{{ $exp->status }} @if($exp->status == 'pending') (مرحله {{ $exp->last_complete_step+1 }} ) @endif</td>
+                            <td>{{ $exp->completed_at }}</td>
+                            <td style="direction: rtl">{{ [ 'pending' => 'در انتظار تکمیل', 'completed' => 'تکمیل شده'][$exp->status] }} @if($exp->status == 'pending') ( مرحله {{ $exp->last_complete_step+1 }} ) @endif</td>
                             <td>{{ $exp->email }}</td>
                             <td>{{ $exp->id }}</td>
                         </tr>
