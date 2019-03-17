@@ -33,3 +33,5 @@ Route::get('clearSession', function(){
 });
 
 Route::get('exp/result', 'Exp\ResultController@show')->name('exp.result');
+
+Route::get('exp/management', 'Exp\ManagementController@index')->name('exp.management.index');
