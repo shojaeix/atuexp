@@ -64,6 +64,9 @@ class StepsController extends Controller
         }
         // update experiment last_completed_step
         $exp->last_complete_step = $number;
+        // update completed_at attribute
+        $exp->completed_at = now();
+        // save updates on experiment object
         $exp->save();
         // redirect user to result page, if Exp completed
         if($exp->last_complete_step == 4){
