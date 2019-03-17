@@ -18,6 +18,12 @@ class Exp extends Model
         'data' => 'array',
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'completed_at',
+    ];
+
     function setData(string $key, $value){
         $data = $this->getAttribute('data');
 
