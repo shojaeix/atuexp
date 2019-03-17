@@ -39,4 +39,8 @@ class Exp extends Model
     function answers(){
         return $this->hasMany(\App\Exp\Answer::class);
     }
+
+    function getStatusAttribute(){
+        return ($this->getAttribute('last_complete_step') == 4) ? 'complete' : 'pending';
+    }
 }
