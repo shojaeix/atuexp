@@ -10,12 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use \Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Auth::routes();
+//Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -33,5 +34,12 @@ Route::get('clearSession', function(){
 });
 
 Route::get('exp/result', 'Exp\ResultController@show')->name('exp.result');
+/*
+Route::group(['middleware' => \App\Http\Middleware\Authenticate::class ], function(){
 
+
+    }
+);
+*/
 Route::get('exp/management', 'Exp\ManagementController@index')->name('exp.management.index');
+Route::get('exp/management/{id}', 'Exp\ManagementController@show')->name('exp.management.show');

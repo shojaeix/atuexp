@@ -40,7 +40,7 @@
                         @foreach($exps as $exp)
                         <tr>
 
-                            <td></td>
+                            <td><a href="{{ route('exp.management.show' , ['id' => $exp->id ]) }}" ><button class="btn btn-primary" >مشاهده</button> </a></td>
                             <td>{{ $exp->completed_at }}</td>
                             <td style="direction: rtl">{{ [ 'pending' => 'در انتظار تکمیل', 'complete' => 'تکمیل شده'][$exp->status] }} @if($exp->status == 'pending') ( مرحله {{ $exp->last_complete_step+1 }} ) @endif</td>
                             <td>{{ $exp->email }}</td>

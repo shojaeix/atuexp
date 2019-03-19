@@ -21,4 +21,15 @@ class ManagementController extends Controller
             'count' => $count,
         ]);
     }
+
+    function show($id){
+        $exp = Exp::findOrFail($id);
+
+        $questionsData = include base_path('resources/exp/questions.php');
+
+        return view('exp.manage.show', [
+            'exp' => $exp,
+            'questionsData' => $questionsData,
+        ]);
+    }
 }
