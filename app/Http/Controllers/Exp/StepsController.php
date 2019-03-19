@@ -21,9 +21,9 @@ class StepsController extends Controller
         if($exp->last_complete_step == 4){
             return redirect(route('exp.result'));
         }
-        // redirect user to next step if this step passed before
-        if($exp->last_complete_step >= $number){
-            return redirect(route('exp.step', ['step_number' => $number+1 ]));
+        // redirect user to right step
+        if($exp->last_complete_step+1 != $number){
+            return redirect(route('exp.step', ['step_number' => $exp->last_complete_step+1 ]));
         }
         $viewName = (($number<4) ? 1 : 4);
 
