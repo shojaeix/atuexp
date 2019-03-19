@@ -75,7 +75,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    آزمون مطلاعاتی دانشگاه طباطبایی
+                    {{ config('app.name') }}
                 </div>
 
                 <div class="links">
