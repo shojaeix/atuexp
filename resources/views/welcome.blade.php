@@ -74,19 +74,39 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    {{ config('app.name') }}
+
+                <div class="row">
+                <div class="container card col col-8 ">
+                    <div class="title m-b-md mt-3">
+                        {{ config('app.name') }}
+                    </div>
+                    <div class="m-3">
+                        سامانه پیش رو به منظور مطالعه‌ در حوزه‌ی مالی و سرمایه‌گذاری ایجاد شده است. هیچ‌گونه اطلاعات شخصی در این پرسشنامه از شما پرسیده نمی‌شود.
+                        برای شرکت در این طرح، روی گزینه "مشارکت" کلیک نمایید.
+                        تکمیل فرم سوالات، 4 الی 6 دقیقه زمان نیاز دارد.
+                        پیشاپیش از شرکت شما در این طرح سپاسگزاریم، به امید موفقیت شما عزیزان.
+                    </div>
+
+                    <div class="links m-3">
+
+                        <a href="">لینک مفید 2</a>
+                        <a href="">لینک مفید 3</a>
+                        <a href=""  class="btn  btn-outline-success">لینک  1</a>
+                        <a href="https://atu.ac.ir"  class="btn  btn-outline-secondary">وبسایت دانشگاه</a>
+                        <a href="{{ route('exp.intro') }}" class="btn  btn-outline-primary">شرکت در آزمون</a>
+                    </div>
+
                 </div>
 
-                <div class="links">
 
-                    <a href="">لینک مفید 2</a>
-                    <a href="">لینک مفید 3</a>
-                    <a href=""  class="btn  btn-outline-success">لینک  1</a>
-                    <a href="https://atu.ac.ir"  class="btn  btn-outline-secondary">وبسایت دانشگاه</a>
-                    <a href="{{ route('exp.intro') }}" class="btn  btn-outline-primary">شرکت در آزمون</a>
                 </div>
+
             </div>
+
+
+
         </div>
+
+
     </body>
 </html>
