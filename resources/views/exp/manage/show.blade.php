@@ -39,7 +39,7 @@
                         <tbody>
 
                         <tr>
-                            <td>{{ $exp->completed_at }}</td>
+                            <td>{{ \Morilog\Jalali\Jalalian::fromDateTime($exp->completed_at) }}</td>
                             <td style="direction: rtl">{{ [ 'pending' => 'در انتظار تکمیل', 'complete' => 'تکمیل شده'][$exp->status] }} @if($exp->status == 'pending') ( مرحله {{ $exp->last_complete_step+1 }} ) @endif</td>
                             <td>{{ $exp->email }}</td>
                             <td>{{ $exp->id }}</td>
