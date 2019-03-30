@@ -38,66 +38,59 @@
 
                         @csrf
                         <div class="">1. به چه میزان از عملکرد سرمایه گذاری خود راضی هستید ؟</div>
-                        <div class="row border-bottom">
-                            <table class="table-borderless col col-12 text-center  mb-1">
-                                <tr>
-                            @foreach([
-                                '-4' => 'بسیار ناراضی',
-                                '-3' => '',
-                                '-2' => '',
-                                '-1' => '',
-                                '0' => 'معمولی',
-                                '1' => '',
-                                '2' => '',
-                                '3' => '',
-                                '4' => 'بسیار راضی',
-                            ] as $value=>$label)
-
-                            <td >
-                            <div><label for="form.question_1.radioButton.{{ $value }}" >{{ $label }}</label></div>
+                        <div class=" border-bottom d-flex justify-content-center " >
                             <div>
-                                <input id="form.question_1.radioButton.{{ $value }}"  name="question_1" type="radio" value="{{ $value }}"
-                                        @if(is_numeric(old('question_1', null)) and old('question_1', null) == $value) checked @endif >
-                            </div>
-                            </td>
 
-                            @endforeach
-                                </tr>
-                            </table>
+                                <table class="table table-borderless text-center  ">
+                                    <tr class="row">
+
+                                        @foreach([
+                                        '-4' => 'بسیار ناراضی',
+                                        '-3' => '',
+                                        '-2' => '',
+                                        '-1' => '',
+                                        '0' => 'معمولی',
+                                        '1' => '',
+                                        '2' => '',
+                                        '3' => '',
+                                        '4' => 'بسیار راضی',
+                                        ] as $value=>$label)
+
+                                        <td class="col col-1" >
+                                            <div class="h-75"><label for="form.question_1.radioButton.{{ $value }}" >{{ $label }}</label></div>
+                                            <div>
+                                                <input id="form.question_1.radioButton.{{ $value }}"  name="question_1" type="radio" value="{{ $value }}"
+                                                       @if(is_numeric(old('question_1', null)) and old('question_1', null) == $value) checked @endif >
+                                            </div>
+                                        </td>
+
+                                        @endforeach
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
+
 
                         <div class="mt-3">2. آیا سهم خود را در قیمت جاری به فروش میرسانید یا نگهداری میکنید ؟</div>
                         <div class="border-bottom">
-                            @foreach([
-                            '4' => '**** به احتمال زیاد میفروشم',
-                            '3' => '***',
-                            '2' => '**',
-                            '1' => '*به احتمال زیاد نگهداری میکنم',
-                            ] as $value=>$label)
 
+                            <div class="row" >
+                                <span class=" m-3 col-md-2">انتخاب کنید: </span>
+                                <span>
+                                    <select  name="question_2" class="form-control  m-3 @if($errors->has('question_2')) is-invalid @endif">
+                              <option  > -- </option>
+                                @foreach([
+                                '1' => 'به احتمال زیاد نگهداری میکنم',
+                                '2' => 'شاید نگهداری کنم',
+                                '3' => 'شاید بفروشم',
+                                '4' => ' به احتمال زیاد میفروشم',
+                                ] as $value=>$label)
 
-                            @endforeach
-
-                            <table class="table-borderless col col-12 text-center mb-1">
-                                <tr>
-                                    @foreach([
-                                    '1' => 'به احتمال زیاد نگهداری میکنم',
-                                    '2' => '',
-                                    '3' => '',
-                                    '4' => ' به احتمال زیاد میفروشم',
-                                    ] as $value=>$label)
-
-                                    <td >
-                                        <div><label for="form.question_2.radioButton.{{ $value }}" >{{ $label }}</label></div>
-                                        <div>
-                                            <input id="form.question_2.radioButton.{{ $value }}" name="question_2" type="radio" value="{{ $value }}"
-                                                   @if(is_numeric(old('question_2', null)) and old('question_2', null) == $value) checked @endif >
-                                        </div>
-                                    </td>
-
-                                    @endforeach
-                                </tr>
-                            </table>
+                              <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach
+                          </select>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="mt-3">
