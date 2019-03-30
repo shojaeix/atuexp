@@ -69,7 +69,7 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    <a href="{{ route('exp.intro') }}">شرکت در آزمون</a>
+                    <a href="{{ route('exp.intro') }}">مشارکت در طرح</a>
                 </div>
             @endif
 
@@ -89,11 +89,10 @@
 
                     <div class="links m-3">
 
-                        <a href="">لینک مفید 2</a>
-                        <a href="">لینک مفید 3</a>
+                  
                         <a href=""  class="btn  btn-outline-success">لینک  1</a>
                         <a href="https://atu.ac.ir"  class="btn  btn-outline-secondary">وبسایت دانشگاه</a>
-                        <a href="{{ route('exp.intro') }}" class="btn  btn-outline-primary">شرکت در آزمون</a>
+                        <a href="{{ route('exp.intro') }}" class="btn  btn-outline-primary">مشارکت در طرح</a>
                     </div>
 
                 </div>
