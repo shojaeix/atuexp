@@ -10,14 +10,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use \Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Exp intro page
+Route::get('/exp', 'Exp\IntroController@intro')->name('exp.intro');
+Route::post('/exp', 'Exp\IntroController@identify')->name('exp.identify');
 
-Route::get('/exp', 'Exp\IntroController@create')->name('exp.intro');
+// Exp steps
+Route::get('exp/step/{number}', 'Exp\StepsController@show')->where('number', '[1-4]')->name('exp.step');
+Route::post('exp/step/{number}', 'Exp\StepsController@submit')->where('number', '[1-4]')->name('exp.step.submit');
+
+
+Route::get('clearSession', function(){
+    session()->flush();
+});
+
+Route::get('exp/result', 'Exp\ResultController@show')->name('exp.result');
+
+Route::group(['middleware' => \App\Http\Middleware\Authenticate::class ], function(){
+    Route::get('exp/management', 'Exp\ManagementController@index')->name('exp.management.index');
+    Route::get('exp/management/{id}', 'Exp\ManagementController@show')->name('exp.management.show');
+    }
+);
