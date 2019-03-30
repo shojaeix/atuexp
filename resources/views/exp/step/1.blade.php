@@ -29,7 +29,6 @@
                     @endforeach
 
                     <div >
-                        <div>Image number {{ $imageNumber }}:</div>
                         <div class="mb-4 mt-2"><img width="100%"  src="{{ \URL::to('images/steps/' . $imageNumber . '.jpg') }}" ></div></div>
 
 
@@ -86,7 +85,7 @@
                                 '4' => ' به احتمال زیاد میفروشم',
                                 ] as $value=>$label)
 
-                              <option value="{{ $value }}">{{ $label }}</option>
+                              <option value="{{ $value }}" @if(old('question_2') == $value) selected="selected" @endif>{{ $label }}</option>
                                 @endforeach
                           </select>
                                 </span>
