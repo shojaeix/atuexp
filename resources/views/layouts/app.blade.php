@@ -62,6 +62,18 @@
                         </li>
                         @endguest
                         -->
+                        @guest @else
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-light" href="{{ route('welcome') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            >خروج</a>
+                        </li>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        @endguest
+
                         <li class="nav-item">
                             <a class="nav-link btn btn-outline-light" href="{{ route('welcome') }}" >صفحه اصلی</a>
                         </li>
