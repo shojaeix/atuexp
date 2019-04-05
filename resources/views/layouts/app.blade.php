@@ -94,5 +94,10 @@
             @yield('content')
         </main>
     </div>
+
+    <footer class="text-center mb-4 mt-3">
+        تمام حقوق برای این وبسایت محفوظ میباشد.
+        <a href="{{ route('about') }}">درباره پدید آورندگان</a>
+    </footer>
 </body>
 </html>
