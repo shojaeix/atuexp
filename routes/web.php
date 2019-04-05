@@ -40,3 +40,5 @@ Route::group(['middleware' => \App\Http\Middleware\Authenticate::class ], functi
     Route::get('exp/management/{id}', 'Exp\ManagementController@show')->name('exp.management.show');
     }
 );
+
+Route::get('about', 'HomeController@about')->name('about');
