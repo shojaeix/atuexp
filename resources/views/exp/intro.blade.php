@@ -38,8 +38,17 @@
                         @csrf
                         <div class="">
                         <div class=" mb-2">
-                        <div><label for="form.email" class="text-right float-right">برای ورود به آزمون، لطفا آدرس ایمیل خود را وارد کنید
-                            </label></div>
+                            <div class="text-right" style="direction: rtl" >
+                            <p class="text-danger">مشارکت‌کننده عزیز، متن زیر را به دقت بخوانید.</p>
+                            <p  class="text-right float-right">
+                                در ادامه به شما عملکرد سه سهم نشان داده خواهد شد. تصور کنید که هر کدام از سهامی نشان داده شده را در سال گذشته خریداری کرده‌اید و هم‌اکنون عملکرد سهم خود را از سال گذشته تاکنون ملاحظه می‌فرمایید. توجه فرمایید که عملکرد سه سهم داده شده از هم مستقل می‌باشند. هر سهم را با دقت مشاهده کرده و تصور کنید مالک هر سهم هستید و در ادامه به سوالات داده شده پاسخ دهید.
+                            </p>
+                            </div>
+                        <div>
+                            <label for="form.email" class="text-right float-right">
+                                برای ورود به آزمون، لطفا آدرس ایمیل خود را وارد کنید
+                            </label>
+                        </div>
                         <div><input name="email" type="email" class="form-control col-6 @if($errors->has('email')) is-invalid @endif" id="form.email" placeholder="example@email.com" value="{{ old('email') }}"></div>
                         </div>
                             <div class="">
