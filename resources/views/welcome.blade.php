@@ -79,9 +79,8 @@
                 <div class="links m-3">
 
 
-                    <a href=""  class="btn  btn-outline-success">لینک  1</a>
-                    <a href="https://atu.ac.ir"  class="btn  btn-outline-secondary">وبسایت دانشگاه</a>
-                    <a href="{{ route('exp.intro') }}" class="btn  btn-outline-primary">مشارکت در طرح</a>
+                    <a href="{{ route('about') }}"  class="btn  btn-outline-success" title="درباره پدیدآورندگان و ارتباط با ما">درباره پدیدآورندگان</a>
+                    <a href="{{ route('exp.intro') }}" class="btn  btn-outline-primary" title="مشارکت در نظرسنجی">مشارکت در طرح</a>
                 </div>
 
             </div>
